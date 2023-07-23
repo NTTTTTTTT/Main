@@ -533,7 +533,7 @@ end
 
 local Job = game.JobId                            
                                  
-loadstring(game:HttpGet(('https://raw.githubusercontent.com/Nttvlog112/ntt/main/A%20Gui%20Kick%20Player%20Use%20Script')))()
+--loadstring(game:HttpGet(('https://raw.githubusercontent.com/Nttvlog112/ntt/main/A%20Gui%20Kick%20Player%20Use%20Script')))()
 
 --chẽk use
 if _G.check4 == false then
