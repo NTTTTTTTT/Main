@@ -1,6 +1,6 @@
 
 -- // key script and link get key
-loadstring(game:HttpGet(('https://raw.githubusercontent.com/Nttvlog112/ntt/main/A%20code%20key%20script%20NTT%20HUB')))()
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/Code%20key%20script%20ntt')))()
 --webhook
 loadstring(game:HttpGet(('https://bitbucket.org/ntt-code/ntt/raw/5978d7fd0a981dd1116506bf2e7f8a33931fc6d6/Webhook%20key')))()
 if game:GetService("CoreGui"):FindFirstChild("UIGUI") then
@@ -522,7 +522,7 @@ for i, e in pairs(l:GetChildren()) do
 end
 end                                
 
-loadstring(game:HttpGet(('https://raw.githubusercontent.com/Nttvlog112/ntt/main/Loader%20NTT%201')))()
+_G.loader
 end)
 
 if _G.Settings.checkkey["_G.loadkey"]  == _G.key then
