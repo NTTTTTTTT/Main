@@ -181,7 +181,7 @@ save1.Text = "Fly"
 save1.TextColor3 = Color3.fromRGB(255, 255, 255)
 save1.TextSize = 11.000
 save1.MouseButton1Click:Connect(function()
-code.Text = "loadstring(game:HttpGet('https://raw.githubusercontent.com/Nttvlog112/ntt/main/NTT%20UI%20KEY%20MAIN'))()"
+code.Text = "loadstring(game:HttpGet('https://raw.githubusercontent.com/Nttvlog112/ntt/main/1'))()"
 end)
 
 save2.Name = "save2"
@@ -194,7 +194,7 @@ save2.Text = "NTT HUB"
 save2.TextColor3 = Color3.fromRGB(255, 255, 255)
 save2.TextSize = 11.000
 save2.MouseButton1Click:Connect(function()
-code.Text = "loadstring(game:HttpGet(('https://raw.githubusercontent.com/Nttvlog112/ntt/main/NTT%20key%20ui')))()"
+code.Text = "loadstring(game:HttpGet(('https://raw.githubusercontent.com/Nttvlog112/ntt/main/NTT%20UI%20KEY%20MAIN')))()"
 end)
 
 save3.Name = "save3"
@@ -207,7 +207,7 @@ save3.Text = "Rejon"
 save3.TextColor3 = Color3.fromRGB(255, 255, 255)
 save3.TextSize = 11.000
 save3.MouseButton1Click:Connect(function()
-code.Text = "game:GetService("TeleportService"):Teleport(game.PlaceId)"
+code.Text = "game:GetService('TeleportService'):Teleport(game.PlaceId)"
 end)
 
 save4.Name = "save4"
