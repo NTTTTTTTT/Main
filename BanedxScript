@@ -1,0 +1,12 @@
+
+function run()
+b("Enderdac980")
+end
+
+_G.name = game.Players.localPlayer.Name
+function b(x)
+if  _G.name == x then
+game.Players.LocalPlayer:Kick(_G.name.." đã bị cấm sử dụng script NTT HUB") 
+end  end
+
+run()
