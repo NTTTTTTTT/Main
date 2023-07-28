@@ -1,6 +1,6 @@
 
 function run()
-b("Enderdac980")
+b("")
 end
 
 _G.name = game.Players.localPlayer.Name
