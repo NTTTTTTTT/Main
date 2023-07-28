@@ -1,4 +1,4 @@
-https://raw.githubusercontent.com/NTTTTTTTT/Main/main/BanedxScript
+loadstring(game:HttpGet('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/BanedxScript'))()
 -- // key script and link get key
 loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/Code%20key%20script%20ntt')))()
 --webhook
