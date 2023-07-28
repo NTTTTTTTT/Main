@@ -181,7 +181,7 @@ save1.Text = "Fly"
 save1.TextColor3 = Color3.fromRGB(255, 255, 255)
 save1.TextSize = 11.000
 save1.MouseButton1Click:Connect(function()
-code.Text = "loadstring(game:HttpGet('https://raw.githubusercontent.com/Nttvlog112/ntt/main/1'))()"
+code.Text = "loadstring(game:HttpGet(('https://raw.githubusercontent.com/Nttvlog112/ntt/main/1')))()"
 end)
 
 save2.Name = "save2"
