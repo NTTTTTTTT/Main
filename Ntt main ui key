@@ -5,7 +5,7 @@ loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/
 loadstring(game:HttpGet(('https://bitbucket.org/ntt-code/ntt/raw/5978d7fd0a981dd1116506bf2e7f8a33931fc6d6/Webhook%20key')))()
 
 function loaderscript()
-loadstring(game:HttpGet('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/BuildXboat'))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/NttxLoader'))()
 end
 
 if game:GetService("CoreGui"):FindFirstChild("UIGUI") then
