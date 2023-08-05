@@ -1,6 +1,6 @@
 
 function run()
-b("")
+b("YTB_HACKMG")
 end
 
 _G.name = game.Players.localPlayer.Name
