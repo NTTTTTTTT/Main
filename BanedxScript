@@ -1,6 +1,7 @@
 
 function run()
 b("YTB_HACKMG")
+b("Vinhsadboy")
 end
 
 _G.name = game.Players.localPlayer.Name
