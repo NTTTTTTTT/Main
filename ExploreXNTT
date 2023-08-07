@@ -238,6 +238,7 @@ end
 end)
 
 makefile(save10, barsave, "Config Fruit BF", UDim2.new(0.50800000, 0, 0, 0))
+save10.MouseButton1Click:Connect(function()
 if _G.buyscript then
 loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/ConfigXFruit')))()
 end end)
