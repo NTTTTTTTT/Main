@@ -41,6 +41,21 @@ local save10 = Instance.new("TextButton")
 local save11 = Instance.new("TextButton")
 local save12 = Instance.new("TextButton")
 
+
+--Ui Libary NTT
+
+function make_file(name1, name2, text, x)
+name1.Name = "name1"
+name1.Parent = name2
+name1.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+name1.Position = x
+name1.Size = UDim2.new(0, 80, 0, 20)
+name1.Font = Enum.Font.Arial
+name1.Text = text
+name1.TextColor3 = Color3.fromRGB(255, 255, 255)
+name1.TextSize = 11.000
+end
+
 --on explore
 local op = Instance.new("TextButton")
 local op1 = Instance.new("UICorner")
@@ -171,130 +186,61 @@ barsave.Position = UDim2.new(0.00000000, 0, 0.085000000, 0) -- vị trí đứng
 barsave.CanvasSize = UDim2.new(0, 1500, 0, 0)
 barsave.ScrollBarThickness = 1
 
-save1.Name = "save1"
-save1.Parent = barsave
-save1.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-save1.Position = UDim2.new(0, 0, 0, 0)
-save1.Size = UDim2.new(0, 80, 0, 20)
-save1.Font = Enum.Font.Arial
-save1.Text = "Fly"
-save1.TextColor3 = Color3.fromRGB(255, 255, 255)
-save1.TextSize = 11.000
+makefile(save, barsave, "Fly Gui", UDim2.new(0.00000, 0, 0, 0))
 save1.MouseButton1Click:Connect(function()
 code.Text = "loadstring(game:HttpGet(('https://raw.githubusercontent.com/Nttvlog112/ntt/main/1')))()"
 end)
 
-save2.Name = "save2"
-save2.Parent = barsave
-save2.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-save2.Position = UDim2.new(0.05700000, 0, 0, 0)
-save2.Size = UDim2.new(0, 80, 0, 20)
-save2.Font = Enum.Font.Arial
-save2.Text = "NTT HUB"
-save2.TextColor3 = Color3.fromRGB(255, 255, 255)
-save2.TextSize = 11.000
+makefile(save, barsave, "NTT HUB", UDim2.new(0.5700000, 0, 0, 0))
 save2.MouseButton1Click:Connect(function()
 code.Text = "loadstring(game:HttpGet(('https://raw.githubusercontent.com/Nttvlog112/ntt/main/NTT%20UI%20KEY%20MAIN')))()"
 end)
 
-save3.Name = "save3"
-save3.Parent = barsave
-save3.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-save3.Position = UDim2.new(0.11400000, 0, 0, 0)
-save3.Size = UDim2.new(0, 80, 0, 20)
-save3.Font = Enum.Font.Arial
-save3.Text = "Rejon"
-save3.TextColor3 = Color3.fromRGB(255, 255, 255)
-save3.TextSize = 11.000
+makefile(save3, barsave, "Rejon", UDim2.new(0.11400000, 0, 0, 0))
 save3.MouseButton1Click:Connect(function()
 code.Text = "game:GetService('TeleportService'):Teleport(game.PlaceId)"
 end)
 
-save4.Name = "save4"
-save4.Parent = barsave
-save4.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-save4.Position = UDim2.new(0.17100000, 0, 0, 0)
-save4.Size = UDim2.new(0, 80, 0, 20)
-save4.Font = Enum.Font.Arial
-save4.Text = "Coppy Position"
-save4.TextColor3 = Color3.fromRGB(255, 255, 255)
-save4.TextSize = 11.000
+makefile(save4, barsave, "Coppy Position", UDim2.new(0.17100000, 0, 0, 0))
 save4.MouseButton1Click:Connect(function()
 code.Text = "setclipboard(tostring(game.Players.LocalPlayer.Character.HumanoidRootPart.Position))"
 end)
 
-save5.Name = "save5"
-save5.Parent = barsave
-save5.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-save5.Position = UDim2.new(0.22800000, 0, 0, 0)
-save5.Size = UDim2.new(0, 80, 0, 20)
-save5.Font = Enum.Font.Arial
-save5.Text = "Tp Sever Vip"
-save5.TextColor3 = Color3.fromRGB(255, 255, 255)
-save5.TextSize = 11.000
+makefile(save5, barsave, "Tp Sever Hop", UDim2.new(0.22800000, 0, 0, 0))
 save5.MouseButton1Click:Connect(function()
 code.Text = "loadstring(game:HttpGet(('https://raw.githubusercontent.com/Nttvlog112/ntt/main/2')))()"
 end)
 
-save6.Name = "save6"
-save6.Parent = barsave
-save6.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-save6.Position = UDim2.new(0.28500000, 0, 0, 0)
-save6.Size = UDim2.new(0, 80, 0, 20)
-save6.Font = Enum.Font.Arial
-save6.Text = "RTX"
-save6.TextColor3 = Color3.fromRGB(255, 255, 255)
-save6.TextSize = 11.000
+makefile(save6, barsave, "RTX", UDim2.new(0.28500000, 0, 0, 0))
 save6.MouseButton1Click:Connect(function()
 code.Text = "loadstring(game:HttpGet(('https://raw.githubusercontent.com/Nttvlog112/ntt/main/3')))()"
 end)
 
 -- WH = WebHook
-
-save7.Name = "save7"
-save7.Parent = barsave
-save7.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-save7.Position = UDim2.new(0.34200000, 0, 0, 0)
-save7.Size = UDim2.new(0, 80, 0, 20)
-save7.Font = Enum.Font.Arial
-save7.Text = "WH Chat"
-save7.TextColor3 = Color3.fromRGB(255, 255, 255)
-save7.TextSize = 11.000
+makefile(save7, barsave, "WB Chat", UDim2.new(0.3420000, 0, 0, 0))
 save7.MouseButton1Click:Connect(function()
 if _G.buyscript then
 code.Text = "_G.chat = '111' loadstring(game:HttpGet(('https://bitbucket.org/ntt-code/ntt/raw/02d3a668a663d9a6a45977b520bf191e09b7bcf2/Webhook%20Chat')))()" 
 end end)
 
-save8.Name = "save8"
-save8.Parent = barsave
-save8.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-save8.Position = UDim2.new(0.39900000, 0, 0, 0)
-save8.Size = UDim2.new(0, 80, 0, 20)
-save8.Font = Enum.Font.Arial
-save8.Text = "WH Get Key"
-save8.TextColor3 = Color3.fromRGB(255, 255, 255)
-save8.TextSize = 11.000
+makefile(save8, barsave, "WH Key", UDim2.new(0.39900000, 0, 0, 0))
 save8.MouseButton1Click:Connect(function()
 if _G.buyscript then
 code.Text = "_G.getkey = '111' loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/Wb%20key')))()"
 end
 end)
 
-save9.Name = "save9"
-save9.Parent = barsave
-save9.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-save9.Position = UDim2.new(0.45600000, 0, 0, 0)
-save9.Size = UDim2.new(0, 80, 0, 20)
-save9.Font = Enum.Font.Arial
-save9.Text = "WH Baned"
-save9.TextColor3 = Color3.fromRGB(255, 255, 255)
-save9.TextSize = 11.000
+makefile(save9, barsave, "WH Baned", UDim2.new(0.45600000, 0, 0, 0))
 save9.MouseButton1Click:Connect(function()
 if _G.buyscript then
 code.Text = "_G.namebaned = '111'loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/Wh%20baned')))()"
 end
 end)
 
+makefile(save10, barsave, "Config Fruit BF", UDim2.new(0.50800000, 0, 0, 0))
+if _G.buyscript then
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/ConfigXFruit')))()
+end end)
 
 -- // code hoạt động  code text
 
@@ -645,4 +591,3 @@ end
 end)
 
 _G.buyscript = false
-
