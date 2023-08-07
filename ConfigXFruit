@@ -271,7 +271,7 @@ spawn(function()
 -- code config
 
 function codex()
-loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/ConfigXFruit')))()
+"loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/ConfigXFruit')))()"
 end
 
 function svv()
