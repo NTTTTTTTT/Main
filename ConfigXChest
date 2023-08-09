@@ -6,7 +6,7 @@ name1.Name = "name1"
 name1.Parent = game.CoreGui
 name1.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 end
-game.Workspace._WorldOrigin.Locations:Destroy()
+
 make_screengui(NTTGUI)
 
 name.Parent = NTTGUI
@@ -26,33 +26,58 @@ end)
 
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetTeam","Marines") 
 
-function TPchest(P1)          
-                    local Distance = (P1.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
-               if Distance >= 0 then
-                        Speed = 1200000000
-                    end
-                    
-                   local tween =  game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(Distance/Speed), {CFrame = P1  }) tween:Play()                                    
-              end
-                           
-        _G.chest = true      
- game:GetService('RunService').RenderStepped:connect(function()       
-    if   _G.chest then
-      if game:GetService("Workspace"):FindFirstChild("Chest2") then
-     TPchest( game:GetService("Workspace"):FindFirstChild("Chest2").CFrame)
-     end
-     if game:GetService("Workspace"):FindFirstChild("Chest3") then
-TPchest( game:GetService("Workspace"):FindFirstChild("Chest3").CFrame)
-end
-end end)             
-
 game:GetService('RunService').RenderStepped:connect(function()       
-game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
+
+if game:GetService("Workspace"):FindFirstChild("Chest3") then
+for i,v in pairs(game.Workspace:GetChildren()) do
+             if string.find(v.Name, "Chest3") then
+             local pos = v --check pos             
+                    local Distance = (pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude                 
+    if Distance >= 0 then
+                  Speed = 1000000
+           end              
+                                   
+           game:GetService("TweenService"):Create(
+                        game.Players.LocalPlayer.Character.HumanoidRootPart,
+                        TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear),
+                        {CFrame =v.CFrame}
+                    ):Play()    
+end end              
+end
+                                                        if not game:GetService("Workspace"):FindFirstChild("Chest3") then
+             for i,v in pairs(game.Workspace:GetChildren()) do
+             if string.find(v.Name, "Chest2") then
+             local pos = v --check pos             
+                    local Distance = (pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude                 
+    if Distance >= 0 then
+                  Speed = 1000000
+           end                                           
+      if (pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1000 then
+           game:GetService("TweenService"):Create(
+                        game.Players.LocalPlayer.Character.HumanoidRootPart,
+                        TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear),
+                        {CFrame =v.CFrame}
+                    ):Play()    
+     else               
+     game:GetService("TweenService"):Create(
+                        game.Players.LocalPlayer.Character.HumanoidRootPart,
+                        TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear),
+                        {CFrame =v.CFrame}
+                    ):Play()    
+end end  end          
+end
+                                         
+                    game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
                 if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
                     loadstring(game:HttpGet(('https://raw.githubusercontent.com/Nttvlog112/ntt/main/Svv')))()
-                end end) end)
+                end end) 
+           
+         if not game:GetService("Workspace"):FindFirstChild("Chest2") then
+     loadstring(game:HttpGet(('https://raw.githubusercontent.com/Nttvlog112/ntt/main/Svv')))()
+  end              
+end)
 
-spawn(function()
+                        spawn(function()
     while task.wait() do        
             if not game:GetService("Workspace"):FindFirstChild("Chest2") then
      loadstring(game:HttpGet(('https://raw.githubusercontent.com/Nttvlog112/ntt/main/Svv')))()
