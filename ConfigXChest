@@ -25,7 +25,7 @@ name.Text = ("   Beli : " ..game:GetService("Players")["LocalPlayer"].Data.Beli.
 end)
 
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetTeam","Marines") 
-
+game.Workspace._WorldOrigin:Destroy()
 game:GetService('RunService').RenderStepped:connect(function()       
 
 if game:GetService("Workspace"):FindFirstChild("Chest3") then
