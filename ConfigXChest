@@ -24,8 +24,24 @@ game:GetService('RunService').RenderStepped:connect(function()
 name.Text = ("   Beli : " ..game:GetService("Players")["LocalPlayer"].Data.Beli.Value)
 end)
 
+spawn(function()
+        pcall(function()
+            game:GetService("RunService").Stepped:Connect(function()                  
+if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+                        local Noclip = Instance.new("BodyVelocity")
+                        Noclip.Name = "BodyClip"
+                        Noclip.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
+                        Noclip.MaxForce = Vector3.new(100000,100000,100000)
+                        Noclip.Velocity = Vector3.new(0,0,0)
+                     end                
+            end)
+        end)
+    end)
+
+game.Workspace._WorldOrigin.Locations:Destroy()
+
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetTeam","Marines") 
-game.Workspace._WorldOrigin.Locations:Destroy
+
 game:GetService('RunService').RenderStepped:connect(function()       
 
 if game:GetService("Workspace"):FindFirstChild("Chest3") then
