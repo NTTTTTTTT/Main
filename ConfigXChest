@@ -80,14 +80,17 @@ end
                     ):Play()    
 end end  end          
 end
-                                         
-                    game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
-                if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
-                    loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/Svv')))()
-                end end) 
-           
-         
+                                                                          
 end)
+
+spawn(function()
+    while task.wait() do
+        
+            game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
+                if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
+                    game:GetService("TeleportService"):Teleport(game.PlaceId)
+                end end) end end)
+      
 
 spawn(function()
     while task.wait(5) do
