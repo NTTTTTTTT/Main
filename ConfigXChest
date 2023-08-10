@@ -97,14 +97,10 @@ spawn(function()
     end end)
                         
   spawn(function()
-    while task.wait(3.5) do
-        
-            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetTeam","Marines") 
-            wait(.1)
-            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetTeam","Marines") 
-            wait(.1)
+    while task.wait() do
+            
             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetTeam","Marines")  
-            wait(5)         
+           
            end end)
 
 -- // config
