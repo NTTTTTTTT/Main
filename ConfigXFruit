@@ -56,10 +56,26 @@ tool("Dragon Claw")
 end
 
 spawn(function()
-    while task.wait(.4) do
         pcall(function()
-        jump()
-        end) end end)
+            game:GetService("RunService").Stepped:Connect(function()
+                  if _G.fruit then
+if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+                        local Noclip = Instance.new("BodyVelocity")
+                        Noclip.Name = "BodyClip"
+                        Noclip.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
+                        Noclip.MaxForce = Vector3.new(100000,100000,100000)
+                        Noclip.Velocity = Vector3.new(0,0,0)
+                     end
+                  else	
+                     if game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+                        game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
+                     end
+                  end
+            end)
+        end)
+    end)
+    
+    _G.fruit = true
 
 spawn(function()
     while task.wait(5) do
@@ -113,7 +129,7 @@ end  end end
               end) end end)                
              
            spawn(function()
-    while task.wait(1) do
+    while task.wait(3) do
         pcall(function()
 if game:GetService("Players").LocalPlayer.Character:FindFirstChild("Bomb Fruit") or game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Bomb Fruit") then
                     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StoreFruit","Bomb-Bomb",game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Bomb Fruit"))
@@ -288,15 +304,10 @@ spawn(function()
                                 TextLabel.Text.Size = 35
                                 TextLabel.TextStrokeTransparency = 0.000
                                 TextLabel.TextWrapped = true
-                            end
-                            local Dis = math.floor((game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.Handle.Position).Magnitude)
-                            v.Handle.FruitESP.TextLabel.Text = v.Name.."\n"..Dis.." M."
-                        end end end end) end end)
+                                                                                     
+                   end     end end end end) end end)
             
-
-
-
-
+          
 
 
 -- code config
@@ -338,7 +349,7 @@ end
 connection = game:GetService("RunService").RenderStepped:Connect(onRenderStepped)
 
 local queueteleport = syn and syn.queue_on_teleport or queue_on_teleport or fluxus and fluxus.queue_on_teleport
-queueteleport("loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/ConfigXFruit')))()")
+queueteleport("loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/ConfigXFruit')))()1")
 
 spawn(function()
     while task.wait(60) do
