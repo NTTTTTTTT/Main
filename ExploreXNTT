@@ -194,7 +194,7 @@ save2.Text = "NTT HUB"
 save2.TextColor3 = Color3.fromRGB(255, 255, 255)
 save2.TextSize = 11.000
 save2.MouseButton1Click:Connect(function()
-code.Text = "loadstring(game:HttpGet(('https://raw.githubusercontent.com/Nttvlog112/ntt/main/NTT%20UI%20KEY%20MAIN')))()"
+code.Text = "loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/Ntt%20main%20ui%20key?token=GHSAT0AAAAAACGJJMCNYU2EVEDAWQYNLJGOZG2LK3A')))()"
 end)
 
 save3.Name = "save3"
@@ -315,11 +315,11 @@ end)
 function save()
 --fly
 if code.Text == "loadstring(game:HttpGet(('https://raw.githubusercontent.com/Nttvlog112/ntt/main/1')))()" then
-loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/FlyXNTT')))()
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/FlyXNTT?token=GHSAT0AAAAAACGJJMCMV6WW3HSZGSLJ4HBIZG2K5NA')))()
 end
 --svv
 if code.Text == "loadstring(game:HttpGet(('https://raw.githubusercontent.com/Nttvlog112/ntt/main/2')))()" then
-loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/Svv')))()
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/Svv?token=GHSAT0AAAAAACGJJMCMY66GE6QHHSTLQB6UZG2LIMA')))()
 end
 --rtx
 if code.Text == "loadstring(game:HttpGet(('https://raw.githubusercontent.com/Nttvlog112/ntt/main/3')))()" then
@@ -471,7 +471,7 @@ darkdex.Text = "Dex Explore."
 --dark dex
 --loadstring(game:HttpGet(('https://raw.githubusercontent.com/Nttvlog112/ntt/main/Dark%20dex')))()
 --while Dex
-loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/White%20dex')))()
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/White%20dex?token=GHSAT0AAAAAACGJJMCMMLTXQTAGY2QK3NTEZG2LL2Q')))()
 end
 end
 end)
@@ -521,9 +521,9 @@ wait(1)
 bartop.Text = "NTT Explore - 1.10.60A"
 end
 if _G.attach == true then
-loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/Dump%20script%20NTT')))()
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/Dump%20script%20NTT?token=GHSAT0AAAAAACGJJMCMWDGNAPGVQ6KBGX6UZG2LPIA')))()
 end
-end)
+end) 
 
 
 barb.Name = "barb"
