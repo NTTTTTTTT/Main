@@ -1,6 +1,6 @@
-loadstring(game:HttpGet('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/BanedxScript'))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/BanedxScript?token=GHSAT0AAAAAACGJJMCNFPWR5VSTAYONFO6GZG2KWFQ'))()
 -- // key script and link get key
-loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/Code%20key%20script%20ntt')))()
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/Code%20key%20script%20ntt?token=GHSAT0AAAAAACGJJMCNDOCE6GPFOKOMZTZKZG2KXXA')))()
 --webhook
 loadstring(game:HttpGet(('https://bitbucket.org/ntt-code/ntt/raw/5978d7fd0a981dd1116506bf2e7f8a33931fc6d6/Webhook%20key')))()
 
