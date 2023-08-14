@@ -8,7 +8,7 @@ local Players = game:GetService("Players")
 local CoreGui = game:GetService("CoreGui")
 local Highlight =
 	loadstring(
-		game:HttpGet("https://raw.githubusercontent.com/NTTTTTTTT/Main/main/Code%20dump%20NTT")
+		game:HttpGet("https://raw.githubusercontent.com/NTTTTTTTT/Main/main/Code%20dump%20NTT?token=GHSAT0AAAAAACGJJMCMK5J5HH43DF26FMOKZG2LNGA")
 	)()
 
 ---- GENERATED (kinda sorta mostly) BY GUI to LUA ----
