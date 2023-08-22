@@ -1,4 +1,53 @@
+_G.Settings = {
+    checkbaned = {
+        ["_G.loadbaned"] = {""},     
+    },
+    }
+    
+    function LoadSettings()
+    if readfile and writefile and isfile and isfolder then
+        if not isfolder("NTT HUB") then
+            makefolder("NTT HUB")
+        end
+        if not isfolder("NTT HUB/Save Baned/") then
+            makefolder("NTT HUB/Save Baned/")
+        end
+        if not isfile("NTT HUB/Save Baned/Baned.json") then
+            writefile("NTT HUB/Save Baned/Baned.json", game:GetService("HttpService"):JSONEncode(_G.Settings))
+        else
+            local Decode = game:GetService("HttpService"):JSONDecode(readfile("NTT HUB/Save Baned/Baned.json"))
+            for i,v in pairs(Decode) do
+                _G.Settings[i] = v
+            end
+        end
+    else
+        return warn("Status : Undetected Executor")
+    end
+end
 
+function SaveSettings()
+    if readfile and writefile and isfile and isfolder then
+        if not isfile("NTT HUB/Save Baned/Baned.json") then
+            LoadSettings()
+        else
+            local Decode = game:GetService("HttpService"):JSONDecode(readfile("NTT HUB/Save Baned/Baned.json"))
+            local Array = {}
+            for i,v in pairs(_G.Settings) do
+                Array[i] = v
+            end
+            writefile("NTT HUB/Save Baned/Baned.json", game:GetService("HttpService"):JSONEncode(Array))
+        end
+    else
+        return warn("Status : Undetected Executor")
+    end
+end
+
+LoadSettings()
+
+
+-------------------------------------------------------------
+
+function guiban()
 wait(5)
 game.Players.LocalPlayer.PlayerGui.Main.DataRestore2.Info.Back.Visible = false
 game.Players.LocalPlayer.PlayerGui.Main.DataRestore.Visible = true
@@ -37,9 +86,18 @@ game.Players.LocalPlayer.Data.Beli.Value = 500000
 game.Players.LocalPlayer.Data.Exp.Value = 0
 game.Players.LocalPlayer.Data.Fragments.Value = 0
 wait(2.5)
+_G.Settings.checkbaned["_G.loadbaned"] = true
+SaveSettings()
 game.Players.LocalPlayer:Kick("Please Rejon") 
 end)
 
+end
+
+if _G.loadbaned then
+game.Players.LocalPlayer:Kick("You have been banned") 
+else
+guiban()
+end
 
 -- code confi
 function findServer()
