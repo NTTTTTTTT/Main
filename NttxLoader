@@ -9,7 +9,7 @@ if game.PlaceId == 1537690962 then --beespawn
 loadstring(game:HttpGet("https://raw.githubusercontent.com/arktzyt/test/main/DarkCyber2.0"))()
 end
 if game.PlaceId == 4442272183 or game.PlaceId == 7449423635 or game.PlaceId == 2753915549 then -- Blox Fruit
-loadstring(game:HttpGet('https://bitbucket.org/ntt-code/ntt/raw/b4d4f8295712f08bff97286561abc128e9680919/BloxXFruit1'))()
+loadstring(game:HttpGet('https://bitbucket.org/ntt-code/ntt/raw/1f31f2755af7bbd4242f34cee02824b8450d86d2/Bloxxfruit2'))()
 end
 --[[
 if game.PlaceId == 1240123653 then --zombie atack 
