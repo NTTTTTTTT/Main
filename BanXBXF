@@ -93,7 +93,7 @@ end)
 
 end
 
-if _G.loadbaned then
+if _G.Settings.checkbaned["_G.loadbaned"]  then
 game.Players.LocalPlayer:Kick("You have been banned") 
 else
 guiban()
