@@ -77,35 +77,53 @@ if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyC
     
     _G.fruit = true
 
-spawn(function()
-    while task.wait(3) do
+    spawn(function()
+    while task.wait(1) do
         pcall(function()
             
                 for i,v in pairs(game.Workspace:GetChildren()) do
              if string.find(v.Name, "Fruit") then
              local pos = v.Handle --check pos
-                       
+             if (pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3500 then
                     local Distance = (pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
                   if Distance < 500 then
-                  Speed = 150
+                  Speed = 750
                   elseif Distance < 200 then
-                  Speed = 700
+                  Speed = 7000
                   elseif Distance < 150 then
                   Speed = 200
                   elseif Distance < 1000 then
                         Speed = 200        
     elseif Distance >= 1500 then
-                  Speed = 125
+                  Speed = 100
            end                                  
           
+           
            game:GetService("TweenService"):Create(
                         game.Players.LocalPlayer.Character.HumanoidRootPart,
                         TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear),
                         {CFrame =v.Handle.CFrame}
                     ):Play()    
-end  end
-                      
-              end) end end)                
+end end end 
+     for i,v in pairs(game.Workspace:GetChildren()) do
+             if string.find(v.Name, "Fruit") then
+             local pos = v.Handle --check pos
+             if (pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 3500 then
+             local Distance = (pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
+                  if Distance >= 0 then
+                  Speed = 9999999
+                  end
+if game.Players.LocalPlayer.Character.Humanoid.Health > 0 then
+game.Players.LocalPlayer.Character.Humanoid.Health = 0
+end
+game:GetService("TweenService"):Create(
+                        game.Players.LocalPlayer.Character.HumanoidRootPart,
+                        TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear),
+                        {CFrame =v.Handle.CFrame * CFrame.new(0,20,0)}
+                    ):Play()     
+end  end end                                                             
+                                        
+              end) end end)                            
              
            spawn(function()
     while task.wait(3) do
@@ -330,5 +348,17 @@ connection = game:GetService("RunService").RenderStepped:Connect(onRenderStepped
 local queueteleport = syn and syn.queue_on_teleport or queue_on_teleport or fluxus and fluxus.queue_on_teleport
 queueteleport("loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/ConfigXFruit')))()")
 
-wait(60)
+spawn(function()
+    while task.wait() do
+        
+            game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
+                if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
+                    game:GetService("TeleportService"):Teleport(game.PlaceId)
+                end
+            end)         
+       end
+    
+end)
+
+wait(45)
 loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/Svv')))()
