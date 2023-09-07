@@ -469,9 +469,9 @@ if _G.attach == true then
 if darkdex.Text == "Dex Explore" then
 darkdex.Text = "Dex Explore." 
 --dark dex
---loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/DarkXDex')))()
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/DarkXDex')))()
 --while Dex
-loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/White%20dex?token=GHSAT0AAAAAACGJJMCMMLTXQTAGY2QK3NTEZG2LL2Q')))()
+--loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/White%20dex?token=GHSAT0AAAAAACGJJMCMMLTXQTAGY2QK3NTEZG2LL2Q')))()
 end
 end
 end)
