@@ -455,25 +455,12 @@ darkdex.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 darkdex.Position = UDim2.new(0, 0, 0, 0)
 darkdex.Size = UDim2.new(0, 100, 0, 35)
 darkdex.Font = Enum.Font.Arial
-darkdex.Text = "Dex Explore"
+darkdex.Text = "Dark Dex"
 darkdex.TextColor3 = Color3.fromRGB(255, 255, 255)
 darkdex.TextSize = 14.000
 darkdex.MouseButton1Click:Connect(function()
-if _G.attach == false then
-bartop.Text = "NTT Explore - 1.10.60A (Need you attach!)"
-wait(1)
-bartop.Text = "NTT Explore - 1.10.60A"
-end
-
-if _G.attach == true then
-if darkdex.Text == "Dex Explore" then
-darkdex.Text = "Dex Explore." 
 --dark dex
 loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/DarkXDex')))()
---while Dex
---loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/White%20dex?token=GHSAT0AAAAAACGJJMCMMLTXQTAGY2QK3NTEZG2LL2Q')))()
-end
-end
 end)
 
 antiban.Name = "antiban"
@@ -482,27 +469,12 @@ antiban.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 antiban.Position = UDim2.new(0, 0, 0.210000000, 0)
 antiban.Size = UDim2.new(0, 100, 0, 35)
 antiban.Font = Enum.Font.Arial
-antiban.Text = "Anti Ban"
+antiban.Text = "White Dex"
 antiban.TextColor3 = Color3.fromRGB(255, 255, 255)
 antiban.TextSize = 14.000
 antiban.MouseButton1Click:Connect(function()
-if _G.attach == false then
-bartop.Text = "NTT Explore - 1.10.60A (Need You Attach!)"
-wait(0.8)
-bartop.Text = "NTT Explore - 1.10.60A"
-end
-if _G.attach == true then
-bartop.Text = "NTT Explore - 1.10.60A (Checking Anti Ban...)"
-wait(1)
-bartop.Text = "NTT Explore - 1.10.60A (Hide Name Player)"
-game.Players.LocalPlayer.Name = 0000000000
-wait(1)
-bartop.Text = "NTT Explore - 1.10.60A (Anti Report Player)"
-wait(1)
-bartop.Text = "NTT Explore - 1.10.60A (Anti Ban Load Success!)"
-wait(0.5)
-bartop.Text = "NTT Explore - 1.10.60A"
-end
+--while Dex
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/White%20dex?token=GHSAT0AAAAAACGJJMCMMLTXQTAGY2QK3NTEZG2LL2Q')))()
 end)
 
 dumpcode.Name = "dumpcode"
