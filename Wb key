@@ -15,7 +15,7 @@ loadstring(game:HttpGet(('https://bitbucket.org/ntt-code/ntt/raw/a043ac3c5b49bb6
                                         },               
                  {
                                             ["name"]= "Link Get Key",
-                                            ["value"]= "```".._G.getkey.."```";
+                                            ["value"]= "```https://sites.google.com/view/keysytemntthub/trang-ch%E1%BB%A7```";
                                             ["inline"]= true
                                         },                          
                                     }              
