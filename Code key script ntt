@@ -21,3 +21,5 @@ elseif os.date("".."%d".." ".."%B".." ".."%Y".."") == "23 September 2023" then
 _G.key= "193828"
 _G.linkkey="https://link1s.com/Hzsbugg"
 end
+
+_G.key = "trungthuvv"
