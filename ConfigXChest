@@ -55,11 +55,10 @@ if string.find(v.Name, "Chest1") then
              game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=v.CFrame
  end end 
 
-end end
-game:GetService('RunService').RenderStepped:connect(function()       
+end end       
 game:GetService('RunService').RenderStepped:connect(function()       
 chest()
-end) end)
+end) 
 --[[
 game:GetService('RunService').RenderStepped:connect(function()       
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetTeam","Marines") 
