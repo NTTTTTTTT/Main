@@ -40,49 +40,31 @@ if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyC
 
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetTeam","Marines") 
 
-game:GetService('RunService').RenderStepped:connect(function()       
-
-if game:GetService("Workspace"):FindFirstChild("Chest3") then
+function chest()
 for i,v in pairs(game.Workspace:GetChildren()) do
-             if string.find(v.Name, "Chest3") then
-             local pos = v --check pos             
-                    local Distance = (pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude                 
-    if Distance >= 0 then
-                  Speed = 1000000
-           end              
-                                   
-           game:GetService("TweenService"):Create(
-                        game.Players.LocalPlayer.Character.HumanoidRootPart,
-                        TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear),
-                        {CFrame =v.CFrame}
-                    ):Play()    
-end end              
-end
-                                                        if not game:GetService("Workspace"):FindFirstChild("Chest3") then
-             for i,v in pairs(game.Workspace:GetChildren()) do
-             if string.find(v.Name, "Chest2") then
-             local pos = v --check pos             
-                    local Distance = (pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude                 
-    if Distance >= 0 then
-                  Speed = 1000000
-           end                                           
-      if (pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1000 then
-           game:GetService("TweenService"):Create(
-                        game.Players.LocalPlayer.Character.HumanoidRootPart,
-                        TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear),
-                        {CFrame =v.CFrame}
-                    ):Play()    
-     else               
-     game:GetService("TweenService"):Create(
-                        game.Players.LocalPlayer.Character.HumanoidRootPart,
-                        TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear),
-                        {CFrame =v.CFrame}
-                    ):Play()    
-end end  end          
-end
-                                                                          
-end)
 
+             if string.find(v.Name, "Chest3") then
+             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=v.CFrame      
+end
+if not game:GetService("Workspace"):FindFirstChild("Chest3") then
+if string.find(v.Name, "Chest2") then
+             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=v.CFrame
+ end end
+ if not game:GetService("Workspace"):FindFirstChild("Chest2") then
+if string.find(v.Name, "Chest1") then
+             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=v.CFrame
+ end end 
+
+end end
+game:GetService('RunService').RenderStepped:connect(function()       
+game:GetService('RunService').RenderStepped:connect(function()       
+chest()
+end) end)
+--[[
+game:GetService('RunService').RenderStepped:connect(function()       
+game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetTeam","Marines") 
+end)
+]]
 spawn(function()
     while task.wait() do
         
