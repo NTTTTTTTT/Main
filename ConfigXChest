@@ -38,9 +38,7 @@ if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyC
         end)
     end)
 
-game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetTeam","Marines") 
-
-function chest()
+function chesttp()
 for i,v in pairs(game.Workspace:GetChildren()) do
 
              if string.find(v.Name, "Chest3") then
@@ -55,15 +53,12 @@ if string.find(v.Name, "Chest1") then
              game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=v.CFrame
  end end 
 
-end end       
-game:GetService('RunService').RenderStepped:connect(function()       
-chest()
-end) 
---[[
+end end
 game:GetService('RunService').RenderStepped:connect(function()       
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetTeam","Marines") 
+chesttp()
 end)
-]]
+
 spawn(function()
     while task.wait() do
         
@@ -75,7 +70,8 @@ spawn(function()
 
 spawn(function()
     while task.wait(5) do
-    if not game:GetService("Workspace"):FindFirstChild("Chest2") then
+    if not game:GetService("Workspace"):FindFirstChild("Chest3") then
+    elseif not game:GetService("Workspace"):FindFirstChild("Chest2") then
      loadstring(game:HttpGet(('https://raw.githubusercontent.com/NTTTTTTTT/Main/main/Svv')))()
   end
     end end)
