@@ -3,25 +3,103 @@ _G.xx="2024"
 
 _G.tt = "Key Sẽ Làm Mới Mỗi Ngày Từ Lúc 24h"
 _G.day=os.date("".."%d".." ".."%B".." ".."%Y".."")
+_G.link="https://web1s.co/Kkk"
+if _G.day == ("1 ".._G.dd.." ".._G.xx) then
+_G.linkkey=(_G.link.."1")
+_G.key= "150891"
+elseif _G.day == ("2 ".._G.dd.." ".._G.xx) then
+_G.linkkey=(_G.link.."2")
+_G.key= "291923"
+elseif _G.day == ("3 ".._G.dd.." ".._G.xx) then
+_G.linkkey=(_G.link.."3")
+_G.key= "183721"
+elseif _G.day == ("4 ".._G.dd.." ".._G.xx) then
+_G.linkkey=(_G.link.."4")
+_G.key= "292721"
+elseif _G.day == ("5 ".._G.dd.." ".._G.xx) then
+_G.linkkey=(_G.link.."5")
+_G.key= "483637"
+elseif _G.day == ("6 ".._G.dd.." ".._G.xx) then
+_G.linkkey=(_G.link.."6")
+_G.key= "293872"
+elseif _G.day == ("7 ".._G.dd.." ".._G.xx) then
+_G.linkkey=(_G.link.."7")
+_G.key= "193828"
+elseif _G.day == ("8 ".._G.dd.." ".._G.xx) then
+_G.linkkey=(_G.link.."8")
+_G.key= "193828"
+elseif _G.day == ("9 ".._G.dd.." ".._G.xx) then
+_G.linkkey=(_G.link.."9")
+_G.key= "018181128"
+elseif _G.day == ("10 ".._G.dd.." ".._G.xx) then
+_G.linkkey=(_G.link.."10")
+_G.key= "01888171228"
+elseif _G.day == ("11 ".._G.dd.." ".._G.xx) then
+_G.linkkey=(_G.link.."11")
+_G.key= "4873712228"
+elseif _G.day == ("12 ".._G.dd.." ".._G.xx) then
+_G.linkkey=(_G.link.."12")
+_G.key= "01817516258"
+elseif _G.day == ("13 ".._G.dd.." ".._G.xx) then
+_G.linkkey=(_G.link.."13")
+_G.key= "381727186"
+elseif _G.day == ("14 ".._G.dd.." ".._G.xx) then
+_G.linkkey=(_G.link.."14")
+_G.key= "87712228"
+elseif _G.day == ("15 ".._G.dd.." ".._G.xx) then
+_G.linkkey=(_G.link.."15")
+_G.key= "19902289"
+elseif _G.day == ("16 ".._G.dd.." ".._G.xx) then
+_G.linkkey=(_G.link.."16")
+_G.key= "19292888"
+elseif _G.day == ("17 ".._G.dd.." ".._G.xx) then
+_G.linkkey=(_G.link.."17")
+_G.key= "8272719"
+elseif _G.day == ("18 ".._G.dd.." ".._G.xx) then
+_G.linkkey=(_G.link.."18")
+_G.key= "2818272"
+elseif _G.day == ("19 ".._G.dd.." ".._G.xx) then
+_G.linkkey=(_G.link.."19")
+_G.key= "098881882"
+elseif _G.day == ("20 ".._G.dd.." ".._G.xx) then
+_G.linkkey=(_G.link.."20")
+_G.key= "1918192"
+elseif _G.day == ("21 ".._G.dd.." ".._G.xx) then
+_G.linkkey=(_G.link.."21")
+_G.key= "6618618"
+elseif _G.day == ("22 ".._G.dd.." ".._G.xx) then
+_G.linkkey=(_G.link.."22")
+_G.key= "8172611"
+elseif _G.day == ("23 ".._G.dd.." ".._G.xx) then
+_G.linkkey=(_G.link.."23")
+_G.key= "343248"
+elseif _G.day == ("24 ".._G.dd.." ".._G.xx) then
+_G.linkkey=(_G.link.."24")
+_G.key= "917181"
+elseif _G.day == ("25 ".._G.dd.." ".._G.xx) then
+_G.linkkey=(_G.link.."25")
+_G.key= "0181812"
+elseif _G.day == ("26 ".._G.dd.." ".._G.xx) then
+_G.linkkey=(_G.link.."26")
+_G.key= "98991111"
+elseif _G.day == ("27 ".._G.dd.." ".._G.xx) then
+_G.linkkey=(_G.link.."27")
+_G.key= "121029"
+elseif _G.day == ("28 ".._G.dd.." ".._G.xx) then
+_G.linkkey=(_G.link.."28")
+_G.key= "011888"
+elseif _G.day == ("29 ".._G.dd.." ".._G.xx) then
+_G.linkkey=(_G.link.."29")
+_G.key= "19818181"
+elseif _G.day == ("30 ".._G.dd.." ".._G.xx) then
+_G.linkkey=(_G.link.."30")
+_G.key= "0191817"
+elseif _G.day == ("31 ".._G.dd.." ".._G.xx) then
+_G.linkkey=(_G.link.."31")
+_G.key= "1827188218"
+end
+
 if _G.day == ("12 ".._G.dd.." ".._G.xx) then
 _G.key= "291923"
 _G.linkkey="https://link1s.com/viSd"
-elseif _G.day == "13 September 2023" then
-_G.key= "291923"
-_G.linkkey="https://link1s.com/viSd"
-elseif _G.day == "14 September 2023" then
-_G.key= "183721"
-_G.linkkey="https://link1s.com/XMVM"
-elseif _G.day == "15 September 2023" then
-_G.key= "292721"
-_G.linkkey="https://link1s.com/hF0Q2wj"
-elseif _G.day == "16 September 2023" then
-_G.key= "483637"
-_G.linkkey="https://link1s.com/TCRqU"
-elseif _G.day == "17 September 2023" then
-_G.key= "293872"
-_G.linkkey="https://link1s.com/XKqdk6ky"
-elseif _G.day == "18 September 2023" then
-_G.key= "193828"
-_G.linkkey="https://link1s.com/Hzsbugg"
 end
