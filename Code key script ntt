@@ -1,25 +1,2 @@
-_G.tt = "Key Sẽ Làm Mới Mỗi Ngày Từ Lúc 24h"
-if os.date("".."%d".." ".."%B".." ".."%Y".."") == "17 September 2023" then
-_G.key= "3619263"
-_G.linkkey="https://link1s.com/viSd"
-elseif os.date("".."%d".." ".."%B".." ".."%Y".."") == "18 September 2023" then
-_G.key= "291923"
-_G.linkkey="https://link1s.com/viSd"
-elseif os.date("".."%d".." ".."%B".." ".."%Y".."") == "19 September 2023" then
-_G.key= "183721"
-_G.linkkey="https://link1s.com/XMVM"
-elseif os.date("".."%d".." ".."%B".." ".."%Y".."") == "20 September 2023" then
-_G.key= "292721"
-_G.linkkey="https://link1s.com/hF0Q2wj"
-elseif os.date("".."%d".." ".."%B".." ".."%Y".."") == "21 September 2023" then
-_G.key= "483637"
-_G.linkkey="https://link1s.com/TCRqU"
-elseif os.date("".."%d".." ".."%B".." ".."%Y".."") == "22 September 2023" then
-_G.key= "293872"
-_G.linkkey="https://link1s.com/XKqdk6ky"
-elseif os.date("".."%d".." ".."%B".." ".."%Y".."") == "23 September 2023" then
-_G.key= "193828"
-_G.linkkey="https://link1s.com/Hzsbugg"
-end
-
-_G.key = "trungthuvv"
+_G.dd="January"
+_G.xx="2024"
