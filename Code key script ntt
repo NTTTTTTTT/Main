@@ -1,7 +1,7 @@
 _G.dd="January"
 _G.xx="2024"
 
-_G.tt = "Key Sẽ Làm Mới Mỗi Ngày Từ Lúc 22h"
+_G.tt = "Key Sẽ Làm Mới Mỗi Ngày Từ Lúc 24h"
 _G.day=os.date("".."%d".." ".."%B".." ".."%Y".."")
 if _G.day == ("12 ".._G.dd.." ".._G.xx) then
 _G.key= "291923"
