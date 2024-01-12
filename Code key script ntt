@@ -4,7 +4,7 @@ _G.xx="2024"
 _G.tt = "Key Sẽ Làm Mới Mỗi Ngày Từ Lúc 22h"
 _G.day=os.date("".."%d".." ".."%B".." ".."%Y".."")
 if _G.day == ("12 ".._G.dd.." ".._G.xx) then
-_G.key= "291932"
+_G.key= "291923"
 _G.linkkey="https://link1s.com/viSd"
 elseif _G.day == "13 September 2023" then
 _G.key= "291923"
