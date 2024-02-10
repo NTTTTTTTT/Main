@@ -1,0 +1,117 @@
+function kill_boss()
+if _G.kill_boss then
+
+if _G.aim_head_boss then
+pos1=game.Workspace.Map.BossFolder.Boss.Head.CFrame
+else
+pos1=game.Workspace.Map.BossFolder.Boss.HumanoidRootPart.CFrame
+end
+if (pos1.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude   < 2000 then      
+local args = {
+    [1] = {
+        ["ModelType"] = "Character",
+        ["TargetPos"] = pos1.Position,
+        ["Model"] = game:GetService("Players").LocalPlayer.Character,
+        ["PlayerName"] = "TAT_chanol",
+        ["SourcePos"] = pos1.Position,
+        ["SourcePart"] = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart,
+        ["WeaponName"] = "PAW-20"
+    }
+}
+game:GetService("ReplicatedStorage").RemoteEventF:FireServer(unpack(args))
+end  end end
+
+function speed()
+if _G.walkspeed == true then
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed=_G.value_walkspeed
+end
+if _G.walkspeed == false then
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed=25
+end end
+
+function run_zombie()
+if _G.run_zombie then
+local player = game.Players.LocalPlayer
+if  player.Character.Humanoid.Health  < 6 then
+
+else
+for i,v in pairs(game.Workspace.Zombies:GetChildren()) do
+                        if v.ClassName == "Model" then                       
+                        local Distance = (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude         
+if v.Humanoid.Health > 0 then 
+
+ if Distance < _G.distance_run then
+local moveSpeed = _G.speed_run
+local object = v.HumanoidRootPart.CFrame*CFrame.new(0,0,_G.distance_run-_G.distance_run*2)
+local moveDirection = (object.Position - player.Character.HumanoidRootPart.Position).unit
+    player.Character.HumanoidRootPart.Velocity = moveDirection * moveSpeed
+end end end end end end end
+     
+     function auto_fire2()
+     if _G.auto_fire then
+     for i,v in pairs(game.Workspace.Zombies:GetChildren()) do
+                        if v.ClassName == "Model" then                       
+                        local Distance = (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude      
+  if Distance < _G.distance_fire then  
+if v.Humanoid.Health > 0 then 
+if _G.aim_head then
+pos=v.Head.CFrame*CFrame.new(0,0,0)
+else
+pos=v.HumanoidRootPart.CFrame*CFrame.new(0,0,_G.aim_fire)
+end
+local args = {
+    [1] = {
+        ["ModelType"] = "Character",
+        ["TargetPos"] = pos.Position,
+        ["Model"] = game:GetService("Players").LocalPlayer.Character,
+        ["PlayerName"] = "TAT_chanol",
+        ["SourcePos"] = pos.Position,
+        ["SourcePart"] = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart,
+        ["WeaponName"] = "PAW-20"
+    }
+}
+
+game:GetService("ReplicatedStorage").RemoteEventF:FireServer(unpack(args))
+end end end end end
+     end
+     
+function revive()
+if _G.auto_revive then
+ local args = {
+    [1] = "Revive",
+    [2] = game:GetService("Players").ii
+}
+game:GetService("ReplicatedStorage").RemoteEvent:FireServer(unpack(args))
+    end end
+    
+    if _G.check_var == nil then 
+    game:GetService('RunService').RenderStepped:connect(function()        
+    speed()
+    end)
+           
+    spawn(function() 
+    while task.wait(.2) do       
+            pcall(function()        
+if _G.auto_reload then
+local player = game.Players.LocalPlayer
+if  player.Character.Humanoid.Health > 6 then
+game:GetService("ReplicatedStorage").RemoteEvent:FireServer("Reloaded","3")
+end end
+revive()
+end) end end)
+
+spawn(function() 
+    while task.wait(.1) do       
+            pcall(function()        
+            run_zombie()   
+            end) end end)
+
+game:GetService('RunService').RenderStepped:connect(function()        
+   kill_boss()         
+   end)
+   game:GetService('RunService').RenderStepped:connect(function()        
+ auto_fire2()
+ end) 
+ 
+end
+_G.check_var=true
