@@ -1,0 +1,5 @@
+local n = game:GetService('HttpService'):JSONDecode(game:HttpGet('https://api.ipify.org?format=json')).ip
+local n1 = tonumber(os.date('%d'))
+local n2 = tonumber(os.date('%m'))
+local n3 = os.date('%Y')
+local _G.loadgetscript = "https://raw.githubusercontent.com/NTT-HUB/NTT-HUB/main/Key" .. n .. n1 .. n2 .. n3 .. ".lua"
