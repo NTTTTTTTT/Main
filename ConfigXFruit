@@ -60,7 +60,7 @@ for i,v in pairs(game.Workspace:GetChildren()) do
 if v.Name:match('Fruit') then
 if v:FindFirstChild("Handle") then
 _G.check_fruit=false
-TP2(v.Handle.CFrame)
+TP1(v.Handle.CFrame)
 end end end
 
 if _G.check_fruit then
