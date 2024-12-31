@@ -1,0 +1,34 @@
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+
+-- Tạo GUI
+local screenGui = Instance.new("ScreenGui", game.CoreGui)
+local frame = Instance.new("Frame", screenGui)
+frame.Size = UDim2.new(0, 20, 0, 20)  -- Điều chỉnh kích thước của Frame
+frame.Position = UDim2.new(0, 0, 0, 0)
+frame.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+frame.Visible = false  -- Ban đầu không hiển thị
+
+local function updateFramePosition()
+    frame.Position = UDim2.new(0, mouse.X - frame.Size.X.Offset / 2, 0, mouse.Y - frame.Size.Y.Offset / 2)
+end
+
+local function onMouseClick()
+    frame.Visible = true
+    updateFramePosition()
+    
+    -- Ẩn GUI sau 1 giây nếu không có hành động nào khác
+    delay(1, function()
+        frame.Visible = false
+    end)
+end
+
+-- Liên kết sự kiện nhấp chuột
+mouse.Button1Down:Connect(onMouseClick)
+
+-- Cập nhật vị trí Frame theo chuột
+game:GetService("RunService").RenderStepped:Connect(function()
+    if frame.Visible then
+        updateFramePosition()
+    end
+end)
