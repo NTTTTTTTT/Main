@@ -1,73 +1,49 @@
-local PlaceID = game.PlaceId
-          local AllIDs = {}
-          local foundAnything = ""
-          local actualHour = os.date("!*t").hour
-          local Deleted = false
-          --[[
-          local File = pcall(function()
-              AllIDs = game:GetService('HttpService'):JSONDecode(readfile("NotSameServers.json"))
-          end)
-          if not File then
-              table.insert(AllIDs, actualHour)
-              writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
-          end
-          ]]
-          function TPReturner()
-              local Site;
-              if foundAnything == "" then
-                  Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
-              else
-                  Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
-              end
-              local ID = ""
-              if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
-                  foundAnything = Site.nextPageCursor
-              end
-              local num = 0;
-              for i,v in pairs(Site.data) do
-                  local Possible = true
-                  ID = tostring(v.id)
-                  if tonumber(v.maxPlayers) > tonumber(v.playing) then
-                      for _,Existing in pairs(AllIDs) do
-                          if num ~= 0 then
-                              if ID == tostring(Existing) then
-                                  Possible = false
-                              end
-                          else
-                              if tonumber(actualHour) ~= tonumber(Existing) then
-                                  local delFile = pcall(function()
-                                      -- delfile("NotSameServers.json")
-                                      AllIDs = {}
-                                      table.insert(AllIDs, actualHour)
-                                  end)
-                              end
-                          end
-                          num = num + 1
-                      end
-                      if Possible == true then
-                          table.insert(AllIDs, ID)
-                          wait()
-                          pcall(function()
-                              -- writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
-                              wait()
-                              game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
-                          end)
-                          wait(4)
-                      end
-                  end
-              end
-          end
+local HttpService = game:GetService("HttpService")
+local TPS = game:GetService("TeleportService")
+local PlaceId = game.PlaceId
 
-          function Teleport()
-              while wait() do
-                  pcall(function()
-                      TPReturner()
-                      if foundAnything ~= "" then
-                          TPReturner()
-                      end
-                  end)
-              end
-          end
+-- Hàm lấy danh sách server
+local function getServer()
+    local servers = {}
+    local cursor = ""
+    
+    repeat
+        local url = "https://games.roblox.com/v1/games/" .. PlaceId .. "/servers/Public?sortOrder=Asc&limit=100"
+        if cursor ~= "" then
+            url = url .. "&cursor=" .. cursor
+        end
+        
+        local success, response = pcall(function()
+            return HttpService:JSONDecode(game:HttpGet(url))
+        end)
+        
+        if success and response and response.data then
+            for _, server in ipairs(response.data) do
+                if server.playing < server.maxPlayers and server.id ~= game.JobId then
+                    table.insert(servers, server.id)
+                end
+            end
+            cursor = response.nextPageCursor or ""
+        else
+            print("Không thể lấy danh sách server.")
+            return nil
+        end
+    until not cursor or cursor == ""
+    
+    return servers
+end
 
-          Teleport()
-      
+-- Hàm đổi server
+local function teleportToServer()
+    local servers = getServer()
+    if servers and #servers > 0 then
+        local serverId = servers[math.random(1, #servers)]
+        print("Đang chuyển đến server ID:", serverId)
+        TPS:TeleportToPlaceInstance(PlaceId, serverId)
+    else
+        print("Không tìm thấy server khả dụng.")
+    end
+end
+
+-- Chạy script
+teleportToServer()
