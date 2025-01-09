@@ -1,5 +1,4 @@
-Hop kiểu vậy
-Mà hop này nó cứ vô lại sever củ quài
+
 local PlaceID = game.PlaceId
           local AllIDs = {}
           local foundAnything = ""
