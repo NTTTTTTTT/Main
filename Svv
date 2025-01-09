@@ -1,50 +1,42 @@
 local PlaceID = game.PlaceId
-local HttpService = game:GetService("HttpService")
-local TeleportService = game:GetService("TeleportService")
-local AllIDs = {} -- Danh sách các server đã tham gia
+local AllIDs = {} -- Danh sách server đã tham gia
+local foundAnything = ""
+local actualHour = os.date("!*t").hour
 
-local function getServers()
-    local servers = {}
-    local cursor = ""
-
-    repeat
-        local url = "https://games.roblox.com/v1/games/" .. PlaceID .. "/servers/Public?sortOrder=Asc&limit=100"
-        if cursor ~= "" then
-            url = url .. "&cursor=" .. cursor
-        end
-        
-        local success, response = pcall(function()
-            return HttpService:JSONDecode(game:HttpGet(url))
-        end)
-
-        if success and response and response.data then
-            for _, server in ipairs(response.data) do
-                if server.playing < server.maxPlayers and not table.find(AllIDs, server.id) then
-                    table.insert(servers, server.id) -- Chỉ thêm server chưa tham gia
-                end
-            end
-            cursor = response.nextPageCursor or ""
-        else
-            print("Không thể lấy danh sách server.")
-            return nil
-        end
-    until not cursor or cursor == ""
-    
-    return servers
-end
-
-local function teleportToRandomServer()
-    local servers = getServers()
-    if servers and #servers > 0 then
-        local randomIndex = math.random(1, #servers)
-        local selectedServer = servers[randomIndex]
-        table.insert(AllIDs, selectedServer) -- Lưu server đã vào
-        print("Đang chuyển đến server ID:", selectedServer)
-        TeleportService:TeleportToPlaceInstance(PlaceID, selectedServer)
+function TPReturner()
+    local Site
+    if foundAnything == "" then
+        Site = game:GetService("HttpService"):JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
     else
-        print("Không tìm thấy server khả dụng.")
+        Site = game:GetService("HttpService"):JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
+    end
+
+    if Site.nextPageCursor then
+        foundAnything = Site.nextPageCursor
+    else
+        foundAnything = nil
+    end
+
+    for _, v in pairs(Site.data) do
+        local ID = tostring(v.id)
+        if v.playing < v.maxPlayers and not table.find(AllIDs, ID) then
+            table.insert(AllIDs, ID) -- Lưu ID vào danh sách tránh quay lại
+            game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
+            wait(4) -- Chờ để đảm bảo Teleport được thực hiện
+            return
+        end
     end
 end
 
--- Gọi hàm để đổi server
-teleportToRandomServer()
+function Teleport()
+    while true do
+        TPReturner()
+        if not foundAnything then
+            print("Không tìm thấy server khả dụng. Dừng tìm kiếm.")
+            break
+        end
+        wait(1) -- Chờ để tránh spam API
+    end
+end
+
+Teleport()
