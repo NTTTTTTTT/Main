@@ -1,136 +1,74 @@
---// UPGRADED SERVER HOP (based on your script)
-local Players = game:GetService("Players")
-local TeleportService = game:GetService("TeleportService")
-local HttpService = game:GetService("HttpService")
 
-local LocalPlayer = Players.LocalPlayer
 local PlaceID = game.PlaceId
-local CurrentJobID = game.JobId
+          local AllIDs = {}
+          local foundAnything = ""
+          local actualHour = os.date("!*t").hour
+          local Deleted = false
+          --[[
+          local File = pcall(function()
+              AllIDs = game:GetService('HttpService'):JSONDecode(readfile("NotSameServers.json"))
+          end)
+          if not File then
+              table.insert(AllIDs, actualHour)
+              writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
+          end
+          ]]
+          function TPReturner()
+              local Site;
+              if foundAnything == "" then
+                  Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
+              else
+                  Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
+              end
+              local ID = ""
+              if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
+                  foundAnything = Site.nextPageCursor
+              end
+              local num = 0;
+              for i,v in pairs(Site.data) do
+                  local Possible = true
+                  ID = tostring(v.id)
+                  if tonumber(v.maxPlayers) > tonumber(v.playing) then
+                      for _,Existing in pairs(AllIDs) do
+                          if num ~= 0 then
+                              if ID == tostring(Existing) then
+                                  Possible = false
+                              end
+                          else
+                              if tonumber(actualHour) ~= tonumber(Existing) then
+                                  local delFile = pcall(function()
+                                      -- delfile("NotSameServers.json")
+                                      AllIDs = {}
+                                      table.insert(AllIDs, actualHour)
+                                  end)
+                              end
+                          end
+                          num = num + 1
+                      end
+                      if Possible == true then
+                          table.insert(AllIDs, ID)
+                          wait()
+                          pcall(function()
+                              -- writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
+                              wait()
+                              game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
+                          end)
+                          wait(4)
+                      end
+                  end
+              end
+          end
 
--- SETTINGS
-local MODE = "RANDOM"         -- "LOW" (ít người) | "RANDOM" (random) | "EMPTY" (gần trống)
-local MAX_PAGES = 10       -- tối đa lật bao nhiêu trang server
-local REQUEST_DELAY = 0.8  -- delay mỗi lần request để tránh rate limit
-local FAIL_BACKOFF = 2     -- backoff khi fail request
-local TELEPORT_RETRY = 3   -- retry teleport
+          function Teleport()
+              while wait() do
+                  pcall(function()
+                      TPReturner()
+                      if foundAnything ~= "" then
+                          TPReturner()
+                      end
+                  end)
+              end
+          end
 
--- Memory anti-repeat (trong phiên chơi)
-local visited = {}
-visited[CurrentJobID] = true
-
-local function safeHttpGet(url)
-    local ok, res = pcall(function()
-        return game:HttpGet(url)
-    end)
-    if not ok then return nil end
-    return res
-end
-
-local function getServerPage(cursor)
-    local url = ("https://games.roblox.com/v1/games/%d/servers/Public?sortOrder=Asc&limit=100"):format(PlaceID)
-    if cursor and cursor ~= "" then
-        url = url .. "&cursor=" .. cursor
-    end
-
-    local raw = safeHttpGet(url)
-    if not raw then return nil end
-
-    local ok, data = pcall(function()
-        return HttpService:JSONDecode(raw)
-    end)
-    if not ok then return nil end
-
-    return data
-end
-
-local function chooseServer(servers)
-    if not servers then return nil end
-
-    if MODE == "RANDOM" then
-        -- random pick 1 server hợp lệ
-        local candidates = {}
-        for _, s in ipairs(servers) do
-            if s.id and not visited[s.id] and s.playing < s.maxPlayers then
-                table.insert(candidates, s)
-            end
-        end
-        if #candidates > 0 then
-            return candidates[math.random(1, #candidates)]
-        end
-        return nil
-    end
-
-    -- MODE LOW / EMPTY: ưu tiên server ít người nhất
-    local best, bestPlaying = nil, math.huge
-    for _, s in ipairs(servers) do
-        if s.id and not visited[s.id] and s.playing < s.maxPlayers then
-            if MODE == "EMPTY" then
-                -- chỉ chọn server rất ít người (<= 3) nếu có
-                if s.playing <= 3 then
-                    return s
-                end
-            end
-
-            if s.playing < bestPlaying then
-                best = s
-                bestPlaying = s.playing
-            end
-        end
-    end
-    return best
-end
-
-local function teleportToServer(serverId)
-    visited[serverId] = true
-
-    for attempt = 1, TELEPORT_RETRY do
-        local ok, err = pcall(function()
-            TeleportService:TeleportToPlaceInstance(PlaceID, serverId, LocalPlayer)
-        end)
-
-        if ok then
-            return true
-        else
-            warn("[Hop] Teleport failed attempt " .. attempt .. ": " .. tostring(err))
-            task.wait(1.5)
-        end
-    end
-
-    return false
-end
-
-local function hop()
-    local cursor = ""
-    local backoff = FAIL_BACKOFF
-
-    for page = 1, MAX_PAGES do
-        local data = getServerPage(cursor)
-
-        if not data or not data.data then
-            warn("[Hop] Can't fetch server list. Backoff: " .. backoff)
-            task.wait(backoff)
-            backoff = math.min(backoff * 2, 12) -- tăng dần nhưng cap 12s
-            continue
-        end
-
-        -- reset backoff nếu request OK
-        backoff = FAIL_BACKOFF
-
-        local server = chooseServer(data.data)
-        if server and server.id then
-            print(("[Hop] Selected server: %s | playing: %d/%d"):format(server.id, server.playing, server.maxPlayers))
-            local success = teleportToServer(server.id)
-            if success then return end
-        end
-
-        cursor = data.nextPageCursor
-        if not cursor then break end
-
-        task.wait(REQUEST_DELAY)
-    end
-
-    warn("[Hop] No suitable servers found after scanning pages.")
-end
-
--- run
-hop()
+          Teleport()
+      
