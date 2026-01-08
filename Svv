@@ -1,92 +1,41 @@
-local player = game.Players.LocalPlayer
-local HttpService = game:GetService("HttpService")
 local TeleportService = game:GetService("TeleportService")
-local placeId = game.PlaceId
-local hopFileName = player.Name .. "_hopList.json"
+local HttpService = game:GetService("HttpService")
 
--- Fungsi baca file hopList per player
-local function loadHopList()
-    local success, content = pcall(readfile, hopFileName)
-    if success and content then
-        local ok, data = pcall(HttpService.JSONDecode, HttpService, content)
-        if ok and type(data) == "table" then
-            return data
-        end
+local PlaceId = game.PlaceId
+local JobId = game.JobId
+
+local function GetServers(cursor)
+    local url = "https://games.roblox.com/v1/games/" .. PlaceId .. "/servers/Public?sortOrder=Asc&limit=100"
+    if cursor then
+        url = url .. "&cursor=" .. cursor
     end
-    return {}
+    return HttpService:JSONDecode(game:HttpGet(url))
 end
 
--- Fungsi simpan file hopList per player
-local function saveHopList(hopList)
-    pcall(writefile, hopFileName, HttpService:JSONEncode(hopList))
-end
-
--- Fungsi shuffle table
-local function shuffleTable(t)
-    for i = #t, 2, -1 do
-        local j = math.random(i)
-        t[i], t[j] = t[j], t[i]
-    end
-end
-
--- Fungsi utama hop server dengan paging + retry loop
-function hopServerWithRetry(reason)
-    print("[ServerHop] Reason:", reason or "Unknown")
-    local hopList = loadHopList()
-    local lastServer = game.JobId
+local function HopToLowServer()
+    local cursor = nil
+    local bestServer = nil
+    local lowestPlayers = math.huge
 
     while true do
-        local cursor = nil
-        local candidates = {}
+        local data = GetServers(cursor)
 
-        -- Ambil server dari semua halaman sampai ada candidates
-        repeat
-            local url = "https://games.roblox.com/v1/games/"..placeId.."/servers/Public?sortOrder=Asc&limit=100"
-            if cursor then
-                url = url .. "&cursor=" .. cursor
-            end
-
-            local success, response = pcall(function()
-                return game:HttpGet(url)
-            end)
-
-            if success then
-                local data = HttpService:JSONDecode(response)
-                if data and data.data then
-                    for _, server in ipairs(data.data) do
-                        if server.playing > 0 and server.playing < server.maxPlayers
-                            and server.id ~= lastServer
-                            and not table.find(hopList, server.id) then
-                            table.insert(candidates, server)
-                        end
-                    end
+        for _, server in ipairs(data.data) do
+            if server.id ~= JobId and server.playing < server.maxPlayers then
+                if server.playing < lowestPlayers then
+                    lowestPlayers = server.playing
+                    bestServer = server
                 end
-                cursor = data.nextPageCursor
-            else
-                cursor = nil
             end
-        until cursor == nil or #candidates > 0
-task.spawn(function()
-        if #candidates == 0 then
-            -- Kalau semua server penuh atau sudah di-hop, tunggu dan retry
-            print("[ServerHop] No new servers available, retrying in 5s")
-            task.wait(5)
-        else
-            -- Ambil server random dari candidates
-            shuffleTable(candidates)
-            local target = candidates[1]
-            table.insert(hopList, target.id)
-            saveHopList(hopList)
-
-            print("[ServerHop] Trying:", target.id)
-            pcall(function()
-                TeleportService:TeleportToPlaceInstance(placeId, target.id, player)
-            end)
-
-            return -- teleport dipanggil, keluar loop
         end
-        end)
+
+        cursor = data.nextPageCursor
+        if not cursor then break end
+    end
+
+    if bestServer then
+        TeleportService:TeleportToPlaceInstance(PlaceId, bestServer.id, game.Players.LocalPlayer)
     end
 end
 
-hopServerWithRetry("Hop Sever")
+HopToLowServer()
